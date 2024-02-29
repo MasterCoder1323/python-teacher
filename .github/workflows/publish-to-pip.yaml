@@ -84,11 +84,17 @@ jobs:
   create-release:
       runs-on: ubuntu-latest
       steps:
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v4.1.3
+          with:
+            path: artifacts/
+          
         - name: Create Release
           uses: ncipollo/release-action@v1.14.0
           with:
-            artifacts: windows-exe linux-bin
+            artifacts: artifacts/*
             name: Auto Release
+            draft: true
           
 
 
