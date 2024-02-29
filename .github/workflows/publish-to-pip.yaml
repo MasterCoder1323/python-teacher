@@ -96,6 +96,7 @@ jobs:
             artifacts: artifacts/*
             name: Auto Release
             draft: true
+            tag: auto release
           
 
 
