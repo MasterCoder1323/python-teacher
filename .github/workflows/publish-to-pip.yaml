@@ -52,6 +52,12 @@ jobs:
       - name: Run Nuitka
         run: python3 -m nuitka --standalone --onefile python_teacher.py; ls
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-bin
+          path: python_teacher.bin
+          overwrite: true
     
   compile-for-windows:
     runs-on: windows-latest
@@ -68,11 +74,23 @@ jobs:
       - name: Run Nuitka
         run: nuitka --standalone --onefile python_teacher.py; ls
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-exe
+          path: python_teacher.dist/
+          overwrite: true
 
-
-            
-            
-
+  create-release:
+      runs-on: ubuntu-latest
+                    - name: Create Release
+  # You may pin to the exact commit or the version.
+  # uses: ncipollo/release-action@2c591bcc8ecdcd2db72b97d6147f871fcd833ba5
+  uses: ncipollo/release-action@v1.14.0
+  with:
+    artifacts: windows-exe linux-bin
+    name: Auto Release
+          
 
 
 
