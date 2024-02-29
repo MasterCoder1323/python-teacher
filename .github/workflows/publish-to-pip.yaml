@@ -37,3 +37,33 @@ jobs:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: twine upload dist/*
+  create-release-using-nuitka:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configure Python version
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+
+      - name: Install Nuitka
+        run: pip install nuitka
+
+      - name: Run Nuitka
+        run: nuitka --help
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Actions provide this token, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Made through GitHub actions automaticaly
+          draft: false
+          prerelease: false
+            
+            
+
