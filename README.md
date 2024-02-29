@@ -11,7 +11,7 @@ pip install python-teacher
 Download the source code from the latest release and then run the following commands.
 ```
 cd python-teacher
-python setup.py install
+poetry install
 ```
 ## Use
 Once you have python-teacher installed using the steps above, you can run it from the CLI through `python-teacher`
