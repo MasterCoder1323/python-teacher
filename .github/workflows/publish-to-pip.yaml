@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-bin
-          path: python_teacher.bin
+          path: build/python_teacher.bin
           overwrite: true
     
   compile-for-windows:
@@ -80,7 +80,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: python_teacher.dist/
+          path: build/python_teacher.dist/
           overwrite: true
 
   create-release:
