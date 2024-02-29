@@ -50,11 +50,11 @@ jobs:
         run: python3 -m pip install nuitka
 
       - name: Run Nuitka
-        run: python3 -m nuitka --help
+        run: python3 -m nuitka --windows-target --standalone --onefile python_teacher.py; ls
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: ncipollo/release-action@v1.14.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Actions provide this token, you do not need to create your own token
         with:
@@ -64,6 +64,17 @@ jobs:
             Made through GitHub actions automaticaly
           draft: false
           prerelease: false
+
+
+
             
             
 
+
+
+
+
+
+            
+
+   
