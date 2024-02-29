@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python-teacher"
+version = "1.1.1"
+description = "A command line program to teach you python."
+authors = ["Master Coder 1323 <sparlevi18@gmail.com>"]
+license = "LICENSE"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+python-teacher = "python_teacher:start"
