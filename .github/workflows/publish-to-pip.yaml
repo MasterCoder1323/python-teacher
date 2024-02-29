@@ -47,10 +47,10 @@ jobs:
           python-version: 3.11
 
       - name: Install Nuitka
-        run: pip install nuitka
+        run: python3 -m pip install nuitka
 
       - name: Run Nuitka
-        run: nuitka --help
+        run: python3 -m nuitka --help
 
       - name: Create Release
         id: create_release
