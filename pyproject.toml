@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-teacher"
-version = "1.1.1"
+version = "1.1.2"
 description = "A command line program to teach you python."
 authors = ["Master Coder 1323 <sparlevi18@gmail.com>"]
 license = "LICENSE"
