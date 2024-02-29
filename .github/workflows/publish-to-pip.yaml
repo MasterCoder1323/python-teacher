@@ -72,7 +72,7 @@ jobs:
       - name: Run Nuitka
         uses: Nuitka/Nuitka-Action@v1.1
         with:
-          script_name: python_teacher.py
+          script-name: python_teacher.py
           standalone: true
           onefile: true
 
