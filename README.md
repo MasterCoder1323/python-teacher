@@ -2,13 +2,12 @@
 ## Description:
 Python Teacher is a command-line tool created to teach you Python.
 ## Installing
-**_WARNING: NOT FUNCTIONAL YET_**
 ### Pip:
 ```
 pip install python-teacher
 ```
 ### Source Code
-Download the source code from the latest release and then run the following commands.
+Download the source code from the latest release, unpack it, and then run the following commands.
 ```
 cd python-teacher
 poetry install
