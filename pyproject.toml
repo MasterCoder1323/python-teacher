@@ -10,7 +10,7 @@ readme = "README.md"
 python = "^3.11"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core", 'rich']
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
