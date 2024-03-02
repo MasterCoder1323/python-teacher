@@ -1,4 +1,4 @@
-"""Create the lesson class.
+"""Create the lesson, and part classes.
 """
 from rich import print
 from rich.console import Console
@@ -10,9 +10,9 @@ markdown = Markdown
 class Part:
     """Class for creating parts of lessons and displaying them using console and markdown."""
 
-    def __init__(self, name="Default", version=str(), projects=[]):
+    def __init__(self, name="Default", number=1.1, projects=[]):
         self.name = name
-        self.version = version
+        self.number=number
         self.projects = []
         for project in projects:
             self.add_project(project)
@@ -55,7 +55,7 @@ class Part:
     def run(self):
         """Prints a heading and runs all projects."""
 
-        heading = f"## You got to the next part!\n### Time to learn: {self.name}\n\n"
+        heading = f"## {str(self.number)}.  {self.name}\n\n"
         console.print(markdown(heading))
 
         for project in self.projects:
@@ -65,12 +65,20 @@ class Part:
 
 
 class lesson:
-    def __init__(self, name, version):
+    def __init__(self, name='Default', number=1, intro='introduction',parts=[]):
         self.name = name
-        self.version = version
-        self.parts = []
-    def addPart(self, part):
-        self.parts.append(part)
+        self.number = number
+        self.parts = parts
+        self.intro = intro
+    def start(self):
+        """Prints the name as a Heading, and then prints the intro as markdown.
+        Then runs all parts.
+        """
+        heading = f"## {str(self.number)}.  {self.name}\n\n"
+        console.print(markdown(heading))
+        console.print(markdown(self.intro))
+        for part in self.parts:
+            part.run()
 
 
 if __name__ == '__main__':
