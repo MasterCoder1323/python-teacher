@@ -1,4 +1,4 @@
-name: Release, and Publish to Pip
+name: Publish to Pip
 
 on:
   push:
@@ -37,70 +37,6 @@ jobs:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: twine upload dist/*
-  compile-for-linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Configure Python version
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.11
-
-      - name: Run Nuitka
-        uses: Nuitka/Nuitka-Action@v1.1
-        with:
-          script-name: python_teacher.py
-          standalone: true
-          onefile: true
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-bin
-          path: build/python_teacher.bin
-          overwrite: true
-    
-  compile-for-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Configure Python version
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.11
-
-      - name: Run Nuitka
-        uses: Nuitka/Nuitka-Action@v1.1
-        with:
-          script-name: python_teacher.py
-          standalone: true
-          onefile: true
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-exe
-          path: build/python_teacher.dist/
-          overwrite: true
-
-  create-release:
-      runs-on: ubuntu-latest
-      needs: [compile-for-windows, compile-for-linux]
-      steps:
-        - name: Download a Build Artifact
-          uses: actions/download-artifact@v4.1.3
-          with:
-            path: artifacts/
-          
-        - name: Create Release
-          uses: ncipollo/release-action@v1.14.0
-          with:
-            artifacts: artifacts/*
-            name: Auto Release
-            draft: true
-            tag: auto
-          
-
 
 
 
