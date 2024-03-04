@@ -76,7 +76,12 @@ class lesson:
         """
         heading = f"## {str(self.number)}.  {self.name}\n\n"
         console.print(markdown(heading))
-        console.print(markdown(self.intro))
+        paragraphs = self.intro.split('\n\n')
+        for paragraph in paragraphs:
+            console.print(markdown(paragraph))
+            print('\n')
+            input('Press enter to continue')
+            print('\n')
         for part in self.parts:
             part.run()
 
